@@ -184,19 +184,19 @@ async def _(dyno):
             " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku"
         )
     v = await dyno.reply("Getting Logs....")
-    with open("logs.txt", "w") as log:
+    with open("typhon_logs.txt", "w") as log:
         log.write(app.get_log())
     await v.edit("Got the logs wait a sec")
     await dyno.client.send_file(
         dyno.chat_id,
         "logs.txt",
         reply_to=dyno.id,
-        caption="Masha Bot Logz.",
+        caption="Typhon Bot Logs.",
     )
 
     await asyncio.sleep(5)
     await v.delete()
-    return os.remove("logs.txt")
+    return os.remove("typhon_logs.txt")
 
 
 def prettyjson(obj, indent=2, maxlinelength=80):
