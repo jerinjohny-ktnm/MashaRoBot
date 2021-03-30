@@ -29,12 +29,12 @@ def speedtestxyz_callback(update: Update, context: CallbackContext):
     query = update.callback_query
 
     if query.from_user.id in DEV_USERS:
-        msg = update.effective_message.edit_text("Running a speedtest....")
+        msg = update.effective_message.edit_text("Checking Server Speed....")
         speed = speedtest.Speedtest()
         speed.get_best_server()
         speed.download()
         speed.upload()
-        replymsg = "SpeedTest Results:"
+        replymsg = "Your Server Speed:"
 
         if query.data == "speedtest_image":
             speedtest_image = speed.results.share()
